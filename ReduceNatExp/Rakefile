@@ -1,0 +1,17 @@
+EXTENSION = 'nat'
+FILE_NAME = ''
+
+task :default => [:readline, :open_file]
+
+task :readline do
+	number = gets.chomp
+	FILE_NAME = "q#{number}.#{EXTENSION}"
+end
+
+task :open_file => FILE_NAME do
+  sh 'open', FILE_NAME
+end
+  
+file FILE_NAME do
+  sh 'touch', FILE_NAME
+end
